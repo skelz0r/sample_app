@@ -5,15 +5,16 @@ gem 'rails', '3.2.17'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'sqlite3', group: [:test, :development]
 
 group :development, :test do
-      gem "rspec-rails", ">= 2.0.1"
+      gem "rspec-rails", ">=2.6"
     end
 
 group :test do
-gem 'rspec', '2.0.1'
+gem 'rspec', '>=2.6'
 gem 'webrat', '0.7.1'
+gem 'spork-rails'
 end
 
 # Gems used only for assets and not required
@@ -27,6 +28,11 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+gem 'autotest', '>= 4.3.2'
+gem 'autotest-rails-pure', '>= 4.1.0'
+gem 'autotest-fsevent', '>= 0.2.2'
+gem 'autotest-growl', '>= 0.2.4'
 
 gem 'jquery-rails'
 
