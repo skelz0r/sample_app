@@ -13,9 +13,18 @@
 
 require 'spec_helper'
 describe User do
+
+	before(:each) do
+		@attr = {
+			:name => "Example User",
+			:email => "user@example.com",
+			:password => "foobar",
+			:password_confirmation => "foobar"
+		}
+	end
 	
 	it "should create a new instance given valid attributes" do
-		create(:user)
+		User.create!(@attr)
 	end
 	
 	it "should require a name" do
@@ -91,7 +100,7 @@ describe User do
 
 	describe "password encryption" do
 		before(:each) do
-			@user = create(:user)
+			@user = User.create!(@attr)
 		end
 		
 		it "should have an encrypted password attribute" do
