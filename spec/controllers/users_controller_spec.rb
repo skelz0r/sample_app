@@ -3,18 +3,16 @@ describe UsersController do
   render_views
 
   describe "GET 'show'" do
-    before(:each) do
-      @user = create(:user)
-    end
+    let(:user) { create(:user) }
 
     it "should be successful" do
-      get :show, :id => @user
+      get :show, :id => user
       response.should be_success
     end
 
     it "should find the right user" do
-      get :show, :id => @user
-      assigns(:user).should == @user
+      get :show, :id => user
+      assigns(:user).should == user
     end
   end
 
