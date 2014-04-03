@@ -18,16 +18,16 @@ class User < ActiveRecord::Base
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :name, :presence => true,
-    :length => { :maximum => 50 }
+  validates_presence_of :name
+  validates_length_of :name, maximum: 50
   validates_presence_of :email
   validates_format_of :email, with: email_regex
   validates_uniqueness_of :email, case_insensitive: true
 
   # Automatically create the virtual attribute 'password_confirmation'.
-  validates :password, :presence => true,
-    :confirmation => true,
-    :length => { :within => 6..40 }
+  validates_presence_of :password
+  validates_confirmation_of :password, message: 'Please re-enter your password'
+  validates_length_of :password, in: 6..40
 
   before_save :encrypt_password
 
