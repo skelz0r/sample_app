@@ -16,6 +16,7 @@ group :test do
   gem 'rspec', '>=2.6'
   gem 'webrat', '0.7.1'
   gem 'spork-rails'
+  gem 'shoulda-matchers'
 end
 
 # Gems used only for assets and not required
