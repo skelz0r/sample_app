@@ -45,17 +45,8 @@ describe User do
 		end
 	end
 	
-	it "should reject duplicate email addresses" do
-    email = "lol@oki.fr"
-    create(:user, email: email)
-    build(:user, email: email).should_not be_valid
-	end
+  it { should validate_uniqueness_of(:email) }
 	
-	it "should reject email addresses identical up to case" do
-    create(:user, :email => "aa@aa.aa")
-		build(:user, :email => "AA@AA.AA").should_not be_valid
-	end
-
 	describe "password validations" do
 		
 		it "should require a password" do
