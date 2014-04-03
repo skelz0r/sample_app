@@ -14,4 +14,13 @@ module ApplicationHelper
     end
   end
 
+  def error
+    err = nil
+    if @error == true
+      "Error. Your registration failed. Please, check your information before submitting a sign up."
+    else
+      err
+    end
+  end
+
 end

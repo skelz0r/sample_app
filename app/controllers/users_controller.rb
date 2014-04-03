@@ -11,10 +11,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      render 'success'
+      redirect_to root_path
     else
       @title = "Sign up"
-      render 'error'
+      @error = true
+      render 'new'
       end
   end
 end
