@@ -1,5 +1,5 @@
 module SignupSpecHelper
-  def register_user
+  def register_user(user)
     visit '/signup'
     within("#new_user") do
       fill_in 'user_name', :with => user[:name]
