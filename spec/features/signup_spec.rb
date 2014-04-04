@@ -11,6 +11,7 @@ describe "the signin process", :type => :feature do
       fill_in 'user_password_confirmation', :with => user.password_confirmation
     end
     click_button 'Sign up'
+    expect(page).to have_content 'successful'
     current_path.should == '/'
   end
   it "should reject empty names" do
@@ -23,7 +24,7 @@ describe "the signin process", :type => :feature do
     end
     click_button 'Sign up'
     expect(page).to have_content 'Error'
-    pending "FIX ME: current_path.should == '/signup'"
+    current_path.should == '/signup'
   end
   it "should reject long names" do
     visit '/signup'
@@ -35,7 +36,7 @@ describe "the signin process", :type => :feature do
     end
     click_button 'Sign up'
     expect(page).to have_content 'Error'
-    pending "FIX ME:  current_path.should == '/signup'"
+     current_path.should == '/signup'
   end
   it "should reject empty emails" do
     visit '/signup'
@@ -47,7 +48,7 @@ describe "the signin process", :type => :feature do
     end
     click_button 'Sign up'
     expect(page).to have_content 'Error'
-    pending "FIX ME:  current_path.should == '/signup'"
+     current_path.should == '/signup'
   end 
   it "should reject invalid emails" do
     visit '/signup'
@@ -61,7 +62,7 @@ describe "the signin process", :type => :feature do
       end
       click_button 'Sign up'
       expect(page).to have_content 'Error'
-      pending "FIX ME:  current_path.should == '/signup'"
+       current_path.should == '/signup'
     }
   end
   it "should reject duplicated emails" do
@@ -76,7 +77,7 @@ describe "the signin process", :type => :feature do
     end
     click_button 'Sign up'
     expect(page).to have_content 'Error'
-    pending "FIX ME:  current_path.should == '/signup'"
+     current_path.should == '/signup'
   end
   it "should reject empty password" do
     visit '/signup'
@@ -88,7 +89,7 @@ describe "the signin process", :type => :feature do
     end
     click_button 'Sign up'
     expect(page).to have_content 'Error'
-    pending "FIX ME:  current_path.should == '/signup'"
+     current_path.should == '/signup'
   end
   it "should reject mismatched passwords" do
     visit '/signup'
@@ -100,7 +101,7 @@ describe "the signin process", :type => :feature do
     end
     click_button 'Sign up'
     expect(page).to have_content 'Error'
-    pending "FIX ME:  current_path.should == '/signup'"
+     current_path.should == '/signup'
   end
   it "should reject mismatched passwords" do
     visit '/signup'
@@ -112,7 +113,7 @@ describe "the signin process", :type => :feature do
     end
     click_button 'Sign up'
     expect(page).to have_content 'Error'
-    pending "FIX ME:  current_path.should == '/signup'"
+     current_path.should == '/signup'
   end
   it "should reject emails with wrong size" do
     visit '/signup'
@@ -126,7 +127,7 @@ describe "the signin process", :type => :feature do
       end
       click_button 'Sign up'
       expect(page).to have_content 'Error'
-      pending "FIX ME:  current_path.should == '/signup'"
+       current_path.should == '/signup'
     }
   end
 end

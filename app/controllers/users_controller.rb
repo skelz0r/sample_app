@@ -11,11 +11,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      flash[:notice] = "Welcome, #{@user.name}! Your registration has been successful."
       redirect_to root_path
     else
       @title = "Sign up"
-      @error = true
-      render 'new'
+      flash[:alert] = "Error. Registration failed"
+      redirect_to '/signup'
       end
   end
 end
