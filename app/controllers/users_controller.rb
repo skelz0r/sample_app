@@ -17,6 +17,6 @@ class UsersController < ApplicationController
       @title = "Sign up"
       flash[:alert] = "Error. Registration failed"
       redirect_to '/signup'
-      end
+    end
   end
 end
