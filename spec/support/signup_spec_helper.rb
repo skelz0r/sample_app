@@ -1,6 +1,6 @@
 module SignupSpecHelper
   def register_user(user_attributes)
-    visit '/signup'
+    visit signup_path
     within("#new_user") do
       fill_in 'user_name', :with => user_attributes[:name]
       fill_in 'user_email', :with => user_attributes[:email]
