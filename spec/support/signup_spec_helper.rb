@@ -1,11 +1,11 @@
 module SignupSpecHelper
-  def register_user(user)
+  def register_user(user_attributes)
     visit '/signup'
     within("#new_user") do
-      fill_in 'user_name', :with => user[:name]
-      fill_in 'user_email', :with => user[:email]
-      fill_in 'user_password', :with => user[:password]
-      fill_in 'user_password_confirmation', :with => user[:password_confirmation]
+      fill_in 'user_name', :with => user_attributes[:name]
+      fill_in 'user_email', :with => user_attributes[:email]
+      fill_in 'user_password', :with => user_attributes[:password]
+      fill_in 'user_password_confirmation', :with => user_attributes[:password_confirmation]
       click_button 'Sign up'
     end
   end
