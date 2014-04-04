@@ -47,15 +47,16 @@ describe "the signin process", :type => :feature do
     current_path.should == '/signup'
   end
 
-  it "should reject duplicated emails" do
-    visit '/signup'
-    user_with_same_email = {name: "totoh the fooh", email: "foo@foo.foo", password: "foobar", password_confirmation: "foobar"}
-    create(:user,user_with_same_email)
+  context "When a user tries to signup with an email already in use" do
+    before (:each) do
+      create(:user,user)
+    end
+    it "should reject duplicated emails" do
+      register_user(user)
 
-    register_user(user_with_same_email)
-
-    expect(page).to have_content 'Error'
-    current_path.should == '/signup'
+      expect(page).to have_content 'Error'
+      current_path.should == '/signup'
+    end
   end
 
   it "should reject empty password" do
