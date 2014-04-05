@@ -7,8 +7,7 @@ describe "the signin process", :type => :feature do
   it "signs me in" do
     register_user(user_attributes) 
 
-    expect(page).to have_content 'successful'
-    current_path.should == root_path
+    expect_success
   end
 
   it "should reject empty names" do
@@ -16,7 +15,7 @@ describe "the signin process", :type => :feature do
 
     register_user(user_attributes)
 
-    expect(page).to have_content 'Error'
+    expect(page).to have_css '.alert'
     current_path.should == signup_path
   end
 
@@ -25,8 +24,7 @@ describe "the signin process", :type => :feature do
 
     register_user(user_attributes)
 
-    expect(page).to have_content 'Error'
-    current_path.should == signup_path
+    expect_failure
   end
 
   it "should reject empty emails" do
@@ -34,8 +32,7 @@ describe "the signin process", :type => :feature do
 
     register_user(user_attributes)
 
-    expect(page).to have_content 'Error'
-    current_path.should == signup_path
+    expect_failure
   end 
 
   it "should reject invalid emails" do
@@ -43,8 +40,7 @@ describe "the signin process", :type => :feature do
 
     register_user(user_attributes)
 
-    expect(page).to have_content 'Error'
-    current_path.should == signup_path
+    expect_failure
   end
 
   context "When a user tries to signup with an email already in use" do
@@ -54,8 +50,7 @@ describe "the signin process", :type => :feature do
     it "should reject duplicated emails" do
       register_user(user_attributes)
 
-      expect(page).to have_content 'Error'
-      current_path.should == signup_path
+      expect_failure
     end
   end
 
@@ -64,8 +59,7 @@ describe "the signin process", :type => :feature do
 
     register_user(user_attributes)
 
-    expect(page).to have_content 'Error'
-    current_path.should == signup_path
+    expect_failure
   end
 
   it "should reject mismatched passwords" do
@@ -73,8 +67,7 @@ describe "the signin process", :type => :feature do
 
     register_user(user_attributes)
 
-    expect(page).to have_content 'Error'
-    current_path.should == signup_path
+    expect_failure
   end
 
   it "should reject emails with wrong size" do
@@ -83,7 +76,6 @@ describe "the signin process", :type => :feature do
 
     register_user(user_attributes)
 
-    expect(page).to have_content 'Error'
-    current_path.should == signup_path
+    expect_failure
   end
 end

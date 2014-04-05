@@ -9,6 +9,17 @@ module SignupSpecHelper
       click_button 'Sign up'
     end
   end
+
+  def expect_success
+    expect(page).to have_css '.notice'
+    current_path.should == root_path
+  end
+
+  def expect_failure
+    expect(page).to have_css '.alert'
+    current_path.should == signup_path
+  end
+
 end
 
 RSpec.configure do |config|
