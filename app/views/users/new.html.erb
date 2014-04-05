@@ -1,7 +1,7 @@
 <h1>Sign up</h1>
 <% if flash[:alert] %>
   <div class="alert"><%= flash[:alert] %></div>
-  <% end %>
+<% end %>
 <%= form_for(@user) do |f| %>
   <div class="field">
   <%= f.label :name %><br />

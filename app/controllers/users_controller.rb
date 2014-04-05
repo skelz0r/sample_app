@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     else
       @title = "Sign up"
       flash[:alert] = "Error. Registration failed"
-      redirect_to '/signup'
+      redirect_to signup_path
     end
   end
 end

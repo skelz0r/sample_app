@@ -5,16 +5,16 @@ module SigninSpecHelper
     within("#new_session") do
       fill_in 'session_email', :with => user.email
       fill_in 'session_password', :with => user.password
-      click_button 'Sign In'
+      click_button 'Sign in'
     end
   end
 
-  def expect_success
+  def expect_signin_success
     expect(page).to have_css '.notice'
-    current_path.should == root_page
+    current_path.should == root_path
   end
 
-  def expect_failure
+  def expect_signin_failure
     expect(page).to have_css '.alert'
     current_path.should == signin_path
   end

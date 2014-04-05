@@ -7,7 +7,7 @@ describe "the login process", :type => :feature do
   it "logs me in" do
     signin_user
 
-    expect_success
+    expect_signin_success
   end
 
   it "rejects wrong email" do
@@ -15,7 +15,7 @@ describe "the login process", :type => :feature do
 
     signin_user
 
-    expect_failure
+    expect_signin_failure
   end
 
   it "rejects wrong password" do
@@ -23,7 +23,7 @@ describe "the login process", :type => :feature do
 
     signin_user
 
-    expect_failure
+    expect_signin_failure
   end
 
 end

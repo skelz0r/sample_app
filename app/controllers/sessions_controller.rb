@@ -8,9 +8,12 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:email],
                              params[:session][:password])
     if user.nil?
-      # Create an error message and re-render the signin form.
+      @title = "Sign up"
+      flash[:alert] = "Wrong email/password."
+      redirect_to signin_path
     else
-      # Sign the user in and redirect to the user's show page.
+      flash[:notice] = "Welcome back, #{user.name}!"
+      redirect_to root_path
     end
   end
 end

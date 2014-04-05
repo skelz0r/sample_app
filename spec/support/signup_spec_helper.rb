@@ -10,12 +10,12 @@ module SignupSpecHelper
     end
   end
 
-  def expect_success
+  def expect_signup_success
     expect(page).to have_css '.notice'
     current_path.should == root_path
   end
 
-  def expect_failure
+  def expect_signup_failure
     expect(page).to have_css '.alert'
     current_path.should == signup_path
   end
