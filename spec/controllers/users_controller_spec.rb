@@ -28,4 +28,12 @@ describe UsersController do
       response.should have_selector("title", :content => "Sign up")
     end
   end
+  describe "POST 'create'" do
+    describe "success" do
+      it "should sign the user in" do
+        post :create, :user => @attr
+       pending " controller.should be_signed_in"
+      end
+    end
+  end
 end
