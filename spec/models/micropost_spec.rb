@@ -14,11 +14,11 @@ describe Micropost do
   let(:user){create(:user)}
 
   it "should create a new instance given valid attributes" do
-    user.microposts.create(:micropost)
+    user.microposts.create(attributes_for(:micropost))
   end
 
   describe "user associations" do
-    let(:micropost){user.microposts.create(:micropost)}
+    let(:micropost){user.microposts.create!(attributes_for(:micropost))}
 
     it "should have a user attribute" do
       micropost.should respond_to(:user)

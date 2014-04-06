@@ -78,15 +78,26 @@ describe User do
       it "should return the user on email/password match" do
         User.authenticate(user.email, user.password).should == user
       end
-    end
-
-    describe "micropost associations" do
-      let(:user){create(:user)}
-
-      it "should have a microposts attribute" do
-        user.should respond_to(:microposts)
-      end
 
     end
+  end
+
+  describe "micropost associations" do
+    include PostsSpecHelper
+
+    let(:user){create(:user)}
+
+    let(:mp1){create_post_at(1.day.ago)}
+
+    let(:mp2){create_post_at(1.hour.ago)}
+
+    it "should have a microposts attribute" do
+      user.should respond_to(:microposts)
+    end
+
+    it "should have the right microposts in the right order" do
+      pending "user.microposts.should == [mp2, mp1]"
+    end
+
   end
 end
