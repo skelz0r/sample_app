@@ -35,8 +35,8 @@ describe User do
     it { should validate_presence_of(:password) }
 
     it do
-          should validate_confirmation_of(:password).
-                  with_message('Please re-enter your password')
+      should validate_confirmation_of(:password).
+        with_message('Please re-enter your password')
     end
 
     it { should ensure_length_of(:password).is_at_least(6).is_at_most(40) }
@@ -78,6 +78,15 @@ describe User do
       it "should return the user on email/password match" do
         User.authenticate(user.email, user.password).should == user
       end
+    end
+
+    describe "micropost associations" do
+      let(:user){create(:user)}
+
+      it "should have a microposts attribute" do
+        user.should respond_to(:microposts)
+      end
+
     end
   end
 end

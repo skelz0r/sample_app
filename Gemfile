@@ -42,6 +42,8 @@ gem 'factory_girl_rails'
 
 gem 'capybara'
 
+gem 'pry'
+gem "hirb"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
