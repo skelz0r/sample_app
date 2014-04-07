@@ -1,9 +1,8 @@
 # By using the symbol ':user', we get Factory Girl to simulate the User model.
 FactoryGirl.define do 
-
   factory :micropost do
     content "bla"
-    association :user
+    user
   end
 
   sequence :email do |n|
@@ -16,5 +15,4 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
   end
-
 end

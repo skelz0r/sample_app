@@ -83,28 +83,27 @@ describe User do
   end
 
   describe "micropost associations" do
-    include PostsSpecHelper
-
-    before(:each) do
-      @user = create(:user)
-      @mp1 = create_post_at(1.day.ago)
-      @mp2 = create_post_at(1.hour.ago)
-    end
+    let(:user) { create(:user) }
+    let!(:old_post) { create(:micropost, user: user, created_at: 1.day.ago) }
+    let!(:new_post) { create(:micropost, user: user) }
 
     it "should have a microposts attribute" do
+      pending 'GO SHOULDA, OKI?'
       @user.should respond_to(:microposts)
     end
 
     it "should have the right microposts in the right order" do
-      pending "@user.microposts.should == [@mp2, @mp1]"
+      user.microposts.should == [new_post, old_post]
     end
 
     it "should destroy associated microposts" do
-      @user.destroy
-      [@mp1, @mp2].each do |micropost|
-        Micropost.find_by_id(micropost.id).should be_nil
-      end
+      expect {
+        user.destroy
+      }.to change{Micropost.where(user_id: user.id).count}.to(0)
+      # @user.destroy
+      # [@mp1, @mp2].each do |micropost|
+      #   Micropost.find_by_id(micropost.id).should be_nil
+      # end
     end
-  
   end
 end
