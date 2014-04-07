@@ -12,11 +12,13 @@ class SessionsController < ApplicationController
       flash[:alert] = "Wrong email/password."
       redirect_to signin_path
     else
+      sign_in(user)
       flash[:notice] = "Welcome back, #{user.name}!"
       redirect_to root_path
     end
   end
+
+  def destroy
+  end
 end
 
-def destroy
-end

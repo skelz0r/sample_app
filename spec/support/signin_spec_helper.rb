@@ -1,6 +1,6 @@
 module SigninSpecHelper
 
-  def signin_user
+  def signin_user(user)
     visit signin_path
     within("#new_session") do
       fill_in 'session_email', :with => user.email
